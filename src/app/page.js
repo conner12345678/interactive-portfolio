@@ -1,20 +1,25 @@
+'use client';
 import Image from "next/image";
-import HomeContent from '../components/homeContent'
-import Footer from '../components/footer'
+import HomeContent from '../components/homeContent';
+import Footer from '../components/footer';
 import NavBar from "../components/navBar";
 
+import { useState } from "react";
+
 export default function Home() {
+  const [isNav, setIsNav] = useState(true)
   return (
     <div className="p-10 flex flex-col items-center">
-      <NavBar />
-
-      <div className="title-area flex flex-col items-center">
-        <div className="absolute top-4 right-4 cursor-pointer">
+      {!isNav? 
+        <div className="fixed top-4 right-4 cursor-pointer" onClick={() => setIsNav(true)}>
           <div className="w-8 h-1 bg-[#4ade80] mb-2"></div>
           <div className="w-8 h-1 bg-[#4ade80] mb-2"></div>
           <div className="w-8 h-1 bg-[#4ade80]"></div>
         </div>
-
+        :
+        <NavBar isNav={isNav} setIsNav={setIsNav}/>
+    }
+      <div className="title-area flex flex-col items-center">
         <div className="image relative w-[20vw] h-[20vw]">
           <Image
             src="https://res.cloudinary.com/duehylw5k/image/upload/v1734143850/task-manager/cb0aal7zt4uyjwqkv7j7.jpg"
