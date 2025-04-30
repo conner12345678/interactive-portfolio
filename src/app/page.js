@@ -1,5 +1,6 @@
 'use client';
 import Image from "next/image";
+import Link from "next/link";
 import HomeContent from '../components/homeContent';
 import Footer from '../components/footer';
 import NavBar from "../components/navBar";
@@ -8,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react";
 
 export default function Home() {
-  const [isNav, setIsNav] = useState(false)
+  const [isNav, setIsNav] = useState(true)
   return (
     <div className="p-10 flex flex-col items-center">
             <AnimatePresence>
@@ -34,7 +35,7 @@ export default function Home() {
       <div className="title-area flex flex-col items-center">
         <div className="image relative w-[20vw] h-[20vw]">
           <Image
-            src="https://res.cloudinary.com/duehylw5k/image/upload/v1734143850/task-manager/cb0aal7zt4uyjwqkv7j7.jpg"
+            src="https://res.cloudinary.com/duehylw5k/image/upload/v1740194724/picture_rtied7.jpg"
             alt="Image of me"
             fill
             className="object-cover rounded-full"/>
@@ -49,45 +50,50 @@ export default function Home() {
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
 
-            <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
-              <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
-                <Image
-                  src="https://res.cloudinary.com/duehylw5k/image/upload/v1734143850/task-manager/cb0aal7zt4uyjwqkv7j7.jpg"
-                  alt="test pic"
-                  fill
-                  className="object-cover"
+            <a href="https://cehly-movie-quiz.netlify.app" target="_blank">
+              <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+                  <Image
+                    src="https://res.cloudinary.com/duehylw5k/image/upload/v1740195766/Screenshot_2025-02-21_204156_pzhrt3.png"
+                    alt="Quiz website"
+                    fill
+                    className="object-cover"
                   />
+                </div>
+                <h2 className="text-[f1f5f9] text-xl font-semibold">Quiz website</h2>
+                <p className="text-[#cbd5e1]">This is a small 20 question movie quiz that I worked on</p>
               </div>
-              <h2 className="text-[f1f5f9] text-xl font-semibold">Test Project</h2>
-              <p className="text-[#cbd5e1]">The desc</p>
-            </div>
+            </a>
 
-            <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
-              <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
-                <Image
-                  src="https://res.cloudinary.com/duehylw5k/image/upload/v1734143850/task-manager/cb0aal7zt4uyjwqkv7j7.jpg"
-                  alt="test pic"
-                  fill
-                  className="object-cover"
+            <a href="https://cehly-pokemon-test.netlify.app" target="_blank">
+              <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+                  <Image
+                    src="https://res.cloudinary.com/duehylw5k/image/upload/v1746048020/Screenshot_2025-04-30_141020_hzppvq.png"
+                    alt="Pokemon Website Picture"
+                    fill
+                    className="object-cover"
                   />
+                </div>
+                <h2 className="text-[f1f5f9] text-xl font-semibold">Pokemon website</h2>
+                <p className="text-[#cbd5e1]">This is a pokemon website that uses an api, I worked on</p>
               </div>
-              <h2 className="text-[f1f5f9] text-xl font-semibold">Test Project</h2>
-              <p className="text-[#cbd5e1]">The desc</p>
-            </div>
+            </a>
 
-            <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
-              <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
-                <Image
-                  src="https://res.cloudinary.com/duehylw5k/image/upload/v1734143850/task-manager/cb0aal7zt4uyjwqkv7j7.jpg"
-                  alt="test pic"
-                  fill
-                  className="object-cover"
-                  />
+            <a href="https://invisible-maze-game.netlify.app" target="_blank">
+              <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+                  <Image
+                    src="https://res.cloudinary.com/duehylw5k/image/upload/v1746048000/Screenshot_2025-04-30_141252_t4ie5i.png"
+                    alt="Maze Website Picture"
+                    fill
+                    className="object-cover"
+                    />
+                </div>
+                <h2 className="text-[f1f5f9] text-xl font-semibold">Maze Wesite</h2>
+                <p className="text-[#cbd5e1]">This is one of the first websites that I worked on. It is a maze game.</p>
               </div>
-              <h2 className="text-[f1f5f9] text-xl font-semibold">Test Project</h2>
-              <p className="text-[#cbd5e1]">The desc</p>
-            </div>
-
+            </a>
             <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
               <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
                 <Image

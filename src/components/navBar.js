@@ -14,7 +14,7 @@ export default function NavBar({ isNav, setIsNav }){
                 <MdCancel className="text-[#4ade80] absolute top-4 right-4 cursor-pointer" size={40} onClick={() => setIsNav(false)}/>
                 <Link className="text-white hover:text-[#4ade80] text-[2vw] m-4 px-4" href="/">Home</Link>
                 <Link className="text-white hover:text-[#4ade80] text-[2vw] m-4 px-4" href="/about">About Me</Link>
-                <Link className="text-white hover:text-[#4ade80] text-[2vw] m-4 px-4" href="#">Projects</Link>
+                <Link className="text-white hover:text-[#4ade80] text-[2vw] m-4 px-4" href="/myprojects">Projects</Link>
                 <Link className="text-white hover:text-[#4ade80] text-[2vw] m-4 px-4" href="#">Contact</Link>
         </motion.div>
     )
