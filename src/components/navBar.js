@@ -7,16 +7,15 @@ export default function NavBar({ isNav, setIsNav }){
         <motion.div
             initial={{ x: 200, opacity: 0}}
             animate={{ x: 0, opacity: 1}}
-            exit={{ x: 200, opacity: 0 }}
-            className="fixed top-4 right-4 flex flex-col bg-[#1E293B] h-screen w-1/7 z-50"
+            exit={{ x: 200, opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="fixed top-0 right-0 flex flex-col bg-[#1E293B] h-screen w-[18%] z-50 p-3 pt-16 gap-4"
         >
-            <div className="fixed top-4 right-4 flex flex-col bg-[#1E293B] h-screen w-1/7 z-50">
                 <MdCancel className="text-[#4ade80] absolute top-4 right-4 cursor-pointer" size={40} onClick={() => setIsNav(false)}/>
-                <Link className="flex-1 flex items-center px-6 hover:text-[#4ade80]" href="/">Home</Link>
-                <Link className="flex-1 flex items-center px-6 hover:text-[#4ade80]" href="/about">About Me</Link>
-                <Link className="flex-1 flex items-center px-6 hover:text-[#4ade80]" href="#">Projects</Link>
-                <Link className="flex-1 flex items-center px-6 hover:text-[#4ade80]" href="#">Contact</Link>
-            </div>
+                <Link className="text-white hover:text-[#4ade80] text-[2vw] m-4 px-4" href="/">Home</Link>
+                <Link className="text-white hover:text-[#4ade80] text-[2vw] m-4 px-4" href="/about">About Me</Link>
+                <Link className="text-white hover:text-[#4ade80] text-[2vw] m-4 px-4" href="#">Projects</Link>
+                <Link className="text-white hover:text-[#4ade80] text-[2vw] m-4 px-4" href="#">Contact</Link>
         </motion.div>
     )
 }

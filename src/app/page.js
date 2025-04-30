@@ -3,22 +3,34 @@ import Image from "next/image";
 import HomeContent from '../components/homeContent';
 import Footer from '../components/footer';
 import NavBar from "../components/navBar";
+import { motion, AnimatePresence } from "framer-motion"
 
 import { useState } from "react";
 
 export default function Home() {
-  const [isNav, setIsNav] = useState(true)
+  const [isNav, setIsNav] = useState(false)
   return (
     <div className="p-10 flex flex-col items-center">
-      {!isNav? 
-        <div className="fixed top-4 right-4 cursor-pointer" onClick={() => setIsNav(true)}>
-          <div className="w-8 h-1 bg-[#4ade80] mb-2"></div>
-          <div className="w-8 h-1 bg-[#4ade80] mb-2"></div>
-          <div className="w-8 h-1 bg-[#4ade80]"></div>
-        </div>
-        :
-        <NavBar isNav={isNav} setIsNav={setIsNav}/>
-    }
+            <AnimatePresence>
+                {isNav && (
+                    <NavBar isNav={isNav} setIsNav={setIsNav}/>
+                )}
+            </AnimatePresence>
+
+            {!isNav && (
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="fixed top-4 right-4 cursor-pointer z-50"
+                    onClick={() => setIsNav(true)}
+                >
+                    <div className="w-8 h-1 bg-[#4ade80] mb-2"></div>
+                    <div className="w-8 h-1 bg-[#4ade80] mb-2"></div>
+                    <div className="w-8 h-1 bg-[#4ade80]"></div>
+                </motion.div>
+            )}
       <div className="title-area flex flex-col items-center">
         <div className="image relative w-[20vw] h-[20vw]">
           <Image
@@ -97,7 +109,7 @@ export default function Home() {
 
         <HomeContent title="Breifly about me" content={
           <>
-              <p className="text-center">stuff about me goes in here</p>
+              <p className="text-center">I'm a software developer with 2 years of hands-on coding experience provided by west-MEC. I have learned about building responsive web applications and interfaces using technologies like React, Tailwind, and Next.js. I also have experience and certifications in python, HTML and CSS.</p>
               <div className="col-span-full flex justify-center m-6">
                 <button className="bg-[#4ade80] rounded-lg py-1 border-3 border-black p-1 hover:bg-[#4ade65]">Learn more</button>
               </div>
