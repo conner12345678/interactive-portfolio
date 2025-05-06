@@ -21,19 +21,36 @@ export default function Home() {
   const containerRef = useRef(null)
 
   useEffect(() => {
-    const sections = gsap.utils.toArray('.card')
-
-    gsap.to(sections, {
-      xPercent: -100 * (sections.length -1),
-      ease: 'none',
+    let tl = gsap.timeline({
       scrollTrigger: {
-        trigger: containerRef.current,
+        trigger: '.card-wrapper',
         pin: true,
-        scrub: 1,
-        snap: 1 / (sections.length -1),
-        end: () => '+=' + containerRef.current.offsetWidth
-      },
-    });
+        start: 'top center',
+        end: '+=500',
+        scrub: 1
+      }
+    })
+
+    tl.from('.card', {
+      x: '25vw',
+      duration: 1,
+      ease: 'none'
+    })
+    tl.from('.card2', {
+      x: '100vw',
+      duration: 1,
+      ease: "none"
+    })
+    tl.to('.card', {
+      x: '-100vw',
+      duration: 1,
+      ease: 'none'
+    })
+    tl.to('card2', {
+      x: '25vw',
+      duration: 1,
+      ease: 'none'
+    })
   }, [])
 
   return (
@@ -71,82 +88,86 @@ export default function Home() {
         </div>
         <hr className="my-6 border-t-2 border-[#4ade80] w-full"/>
       </div>
-      <div ref={containerRef} className="flex overflow-hidden h-screen">
-        <div className="flex w-screen">
-          <HomeContent className="card w-screen h-screen flex items-center justify-center" title="My Projects" content={
-            <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+      <div className="flex overflow-hidden h-screen">
+        <div className=" card-wrapper flex w-screen">
+          <div className="card">
+            <HomeContent className="w-screen h-screen flex items-center justify-center" title="My Projects" content={
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
 
-                <a href="https://cehly-movie-quiz.netlify.app" target="_blank">
-                  <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
-                    <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
-                      <Image
-                        src="https://res.cloudinary.com/duehylw5k/image/upload/v1740195766/Screenshot_2025-02-21_204156_pzhrt3.png"
-                        alt="Quiz website"
-                        fill
-                        className="object-cover"
-                      />
+                  <a href="https://cehly-movie-quiz.netlify.app" target="_blank">
+                    <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                      <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+                        <Image
+                          src="https://res.cloudinary.com/duehylw5k/image/upload/v1740195766/Screenshot_2025-02-21_204156_pzhrt3.png"
+                          alt="Quiz website"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <h2 className="text-[f1f5f9] text-xl font-semibold">Quiz website</h2>
+                      <p className="text-[#cbd5e1]">This is a small 20 question movie quiz that I worked on</p>
                     </div>
-                    <h2 className="text-[f1f5f9] text-xl font-semibold">Quiz website</h2>
-                    <p className="text-[#cbd5e1]">This is a small 20 question movie quiz that I worked on</p>
-                  </div>
-                </a>
+                  </a>
 
-                <a href="https://cehly-pokemon-test.netlify.app" target="_blank">
-                  <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
-                    <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
-                      <Image
-                        src="https://res.cloudinary.com/duehylw5k/image/upload/v1746048020/Screenshot_2025-04-30_141020_hzppvq.png"
-                        alt="Pokemon Website Picture"
-                        fill
-                        className="object-cover"
-                      />
+                  <a href="https://cehly-pokemon-test.netlify.app" target="_blank">
+                    <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                      <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+                        <Image
+                          src="https://res.cloudinary.com/duehylw5k/image/upload/v1746048020/Screenshot_2025-04-30_141020_hzppvq.png"
+                          alt="Pokemon Website Picture"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <h2 className="text-[f1f5f9] text-xl font-semibold">Pokemon website</h2>
+                      <p className="text-[#cbd5e1]">This is a pokemon website that uses an api, I worked on</p>
                     </div>
-                    <h2 className="text-[f1f5f9] text-xl font-semibold">Pokemon website</h2>
-                    <p className="text-[#cbd5e1]">This is a pokemon website that uses an api, I worked on</p>
-                  </div>
-                </a>
+                  </a>
 
-                <a href="https://invisible-maze-game.netlify.app" target="_blank">
+                  <a href="https://invisible-maze-game.netlify.app" target="_blank">
+                    <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                      <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+                        <Image
+                          src="https://res.cloudinary.com/duehylw5k/image/upload/v1746048000/Screenshot_2025-04-30_141252_t4ie5i.png"
+                          alt="Maze Website Picture"
+                          fill
+                          className="object-cover"
+                          />
+                      </div>
+                      <h2 className="text-[f1f5f9] text-xl font-semibold">Maze Wesite</h2>
+                      <p className="text-[#cbd5e1]">This is one of the first websites that I worked on. It is a maze game.</p>
+                    </div>
+                  </a>
                   <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
                     <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
                       <Image
-                        src="https://res.cloudinary.com/duehylw5k/image/upload/v1746048000/Screenshot_2025-04-30_141252_t4ie5i.png"
-                        alt="Maze Website Picture"
+                        src="https://res.cloudinary.com/duehylw5k/image/upload/v1734143850/task-manager/cb0aal7zt4uyjwqkv7j7.jpg"
+                        alt="test pic"
                         fill
                         className="object-cover"
                         />
                     </div>
-                    <h2 className="text-[f1f5f9] text-xl font-semibold">Maze Wesite</h2>
-                    <p className="text-[#cbd5e1]">This is one of the first websites that I worked on. It is a maze game.</p>
+                    <h2 className="text-[f1f5f9] text-xl font-semibold">Test Project</h2>
+                    <p className="text-[#cbd5e1]">The desc</p>
                   </div>
-                </a>
-                <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
-                  <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
-                    <Image
-                      src="https://res.cloudinary.com/duehylw5k/image/upload/v1734143850/task-manager/cb0aal7zt4uyjwqkv7j7.jpg"
-                      alt="test pic"
-                      fill
-                      className="object-cover"
-                      />
-                  </div>
-                  <h2 className="text-[f1f5f9] text-xl font-semibold">Test Project</h2>
-                  <p className="text-[#cbd5e1]">The desc</p>
-                </div>
 
-                <div className="col-span-full flex justify-center mt-8">
-                  <button className="bg-[#4ade80] rounded-lg py-1 border-3 border-black p-1 hover:bg-[#4ade65]">Learn more</button>
-                </div>
-              </div>
-            </>}/>
-
-            <HomeContent className="card w-screen h-screen flex items-center justify-center" title="Breifly about me" content={
-              <>
-                  <p className="text-center">I'm a software developer with 2 years of hands-on coding experience provided by west-MEC. I have learned about building responsive web applications and interfaces using technologies like React, Tailwind, and Next.js. I also have experience and certifications in python, HTML and CSS.</p>
-                  <div className="col-span-full flex justify-center m-6">
+                  <div className="col-span-full flex justify-center mt-8">
                     <button className="bg-[#4ade80] rounded-lg py-1 border-3 border-black p-1 hover:bg-[#4ade65]">Learn more</button>
                   </div>
+                </div>
               </>}/>
+            </div>
+
+            <div className="card2">
+              <HomeContent className="w-screen h-screen flex items-center justify-center" title="Breifly about me" content={
+                <>
+                    <p className="text-center">I'm a software developer with 2 years of hands-on coding experience provided by west-MEC. I have learned about building responsive web applications and interfaces using technologies like React, Tailwind, and Next.js. I also have experience and certifications in python, HTML and CSS.</p>
+                    <div className="col-span-full flex justify-center m-6">
+                      <button className="bg-[#4ade80] rounded-lg py-1 border-3 border-black p-1 hover:bg-[#4ade65]">Learn more</button>
+                    </div>
+                </>}/>
+              </div>
             </div>
           </div>
 
