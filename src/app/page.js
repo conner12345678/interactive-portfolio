@@ -16,65 +16,80 @@ gsap.registerPlugin(ScrollTrigger)
 
 
 export default function Home() {
-  const [isNav, setIsNav] = useState(true)
-
-  const containerRef = useRef(null)
+  const [isNav, setIsNav] = useState(false)
 
   useEffect(() => {
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.card-wrapper',
         pin: true,
-        start: 'top center',
-        end: '+=500',
-        scrub: 1
+        pinSpacing: 100,
+        start: 'center center',
+        end: "+=3000",
+        scrub: 1,
+        snap: {
+          snapTo: 'labelsDirectional',
+          duration: 1,
+          delay: 0.1,
+          ease: 'power1.inOut'
+        }
       }
     })
 
-    tl.from('.card', {
-      x: '25vw',
-      duration: 1,
-      ease: 'none'
+    tl.addLabel('card1Enter')
+      .from('.card', { x: 0, duration: 1, ease: 'power2.inOut' })
+      .addLabel('card1Exit')
+      .to('.card', { x: '-100vw', duration: 1, ease: 'power2.inOut' })
+      .addLabel('card2Enter')
+      .from('.card2', { x: '100vw', duration: 1, ease: 'power2.inOut' }, '<')
+      .to('.card2', { x: 0, duration: 1, ease: 'power2.inOut' })
+      .addLabel('card2Exit')
+      .to('.card2', { x: '100vw', duration: 1, ease: 'power2.inOut' })
+      .addLabel('card3Enter')
+      .from('.card3', { x: '-100vw', duration: 1, ease: 'power2.inOut' }, '<')
+      .to('.card3', { x: 0, duration: 1, ease: 'power2.inOut' })
+
+    let pinTrigger = ScrollTrigger.create({
+      trigger: '.card-wrapper',
+      pin: '.title-area',
+      start: 'center center',
+      end: '+=3000',
+      scrub: 1
     })
-    tl.from('.card2', {
-      x: '100vw',
-      duration: 1,
-      ease: "none"
-    })
-    tl.to('.card', {
-      x: '-100vw',
-      duration: 1,
-      ease: 'none'
-    })
-    tl.to('card2', {
-      x: '25vw',
-      duration: 1,
-      ease: 'none'
-    })
+
+    return () => {
+      // 💥 Clean up timeline and ScrollTriggers
+      tl.scrollTrigger?.kill();
+      tl.kill();
+      pinTrigger.kill();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // optional: kill all triggers
+    };
   }, [])
 
   return (
     <div className="p-10 flex flex-col items-center">
-            <AnimatePresence>
-                {isNav && (
-                    <NavBar isNav={isNav} setIsNav={setIsNav}/>
-                )}
-            </AnimatePresence>
+      <div>
+          <AnimatePresence>
+              {isNav && (
+                  <NavBar isNav={isNav} setIsNav={setIsNav}/>
+              )}
+          </AnimatePresence>
 
-            {!isNav && (
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.3 }}
-                    className="fixed top-4 right-4 cursor-pointer z-50"
-                    onClick={() => setIsNav(true)}
-                >
-                    <div className="w-8 h-1 bg-[#4ade80] mb-2"></div>
-                    <div className="w-8 h-1 bg-[#4ade80] mb-2"></div>
-                    <div className="w-8 h-1 bg-[#4ade80]"></div>
-                </motion.div>
-            )}
+          {!isNav && (
+              <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="fixed top-4 right-4 cursor-pointer z-50"
+                  onClick={() => setIsNav(true)}
+              >
+                  <div className="w-8 h-1 bg-[#4ade80] mb-2"></div>
+                  <div className="w-8 h-1 bg-[#4ade80] mb-2"></div>
+                  <div className="w-8 h-1 bg-[#4ade80]"></div>
+              </motion.div>
+          )}
+      </div>
       <div className="title-area flex flex-col items-center">
         <div className="image relative w-[20vw] h-[20vw]">
           <Image
@@ -88,14 +103,13 @@ export default function Home() {
         </div>
         <hr className="my-6 border-t-2 border-[#4ade80] w-full"/>
       </div>
-      <div className="flex overflow-hidden h-screen">
-        <div className=" card-wrapper flex w-screen">
-          <div className="card">
-            <HomeContent className="w-screen h-screen flex items-center justify-center" title="My Projects" content={
-              <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
-
-                  <a href="https://cehly-movie-quiz.netlify.app" target="_blank">
+      
+      <div className="card-wrapper relative overflow-hidden flex justify-center">
+        <div className="card">
+          <HomeContent title="My Projects" content={
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+                <a href="https://cehly-movie-quiz.netlify.app" target="_blank">
                     <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
                       <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
                         <Image
@@ -139,37 +153,42 @@ export default function Home() {
                       <p className="text-[#cbd5e1]">This is one of the first websites that I worked on. It is a maze game.</p>
                     </div>
                   </a>
-                  <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
-                    <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
-                      <Image
-                        src="https://res.cloudinary.com/duehylw5k/image/upload/v1734143850/task-manager/cb0aal7zt4uyjwqkv7j7.jpg"
-                        alt="test pic"
-                        fill
-                        className="object-cover"
-                        />
-                    </div>
-                    <h2 className="text-[f1f5f9] text-xl font-semibold">Test Project</h2>
-                    <p className="text-[#cbd5e1]">The desc</p>
-                  </div>
 
-                  <div className="col-span-full flex justify-center mt-8">
-                    <button className="bg-[#4ade80] rounded-lg py-1 border-3 border-black p-1 hover:bg-[#4ade65]">Learn more</button>
-                  </div>
-                </div>
-              </>}/>
-            </div>
-
-            <div className="card2">
-              <HomeContent className="w-screen h-screen flex items-center justify-center" title="Breifly about me" content={
-                <>
-                    <p className="text-center">I'm a software developer with 2 years of hands-on coding experience provided by west-MEC. I have learned about building responsive web applications and interfaces using technologies like React, Tailwind, and Next.js. I also have experience and certifications in python, HTML and CSS.</p>
-                    <div className="col-span-full flex justify-center m-6">
-                      <button className="bg-[#4ade80] rounded-lg py-1 border-3 border-black p-1 hover:bg-[#4ade65]">Learn more</button>
+                  <a href="#" target="_blank">
+                    <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                      <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+                        <Image
+                          src="https://res.cloudinary.com/duehylw5k/image/upload/v1734143850/task-manager/cb0aal7zt4uyjwqkv7j7.jpg"
+                          alt="test pic"
+                          fill
+                          className="object-cover"
+                          />
+                      </div>
+                      <h2 className="text-[f1f5f9] text-xl font-semibold">Test Project</h2>
+                      <p className="text-[#cbd5e1]">The desc</p>
                     </div>
-                </>}/>
+                  </a>
               </div>
+            </>
+          }/>
+        </div>
+
+        <div className="card2 absolute top-0">
+          <HomeContent title="Breifly About Me" content={
+            <div className="text-center">
+              <p>I am an entree level software engineer with knowladge and certifications in, Javascript, HTML and CSS, and Python. I am constantly looking for new lessons on software development, and am looking for a job to further my knowladge.</p>
             </div>
-          </div>
+          }/>
+        </div>
+
+        <div className="card3 absolute top-0">
+          <HomeContent title="Contact" content={
+            <>
+
+            </>
+          }/>
+        </div>
+      </div>
 
         <Footer />
     </div>
