@@ -94,7 +94,7 @@ export default function Home() {
       <div className="title-area flex flex-col items-center">
         <div className="image relative w-[20vw] h-[20vw]">
           <Image
-            src="https://res.cloudinary.com/duehylw5k/image/upload/v1740194724/picture_rtied7.jpg"
+            src="https://res.cloudinary.com/duehylw5k/image/upload/v1746852463/IMG_0911_nzh3px.jpg"
             alt="Image of me"
             fill
             className="object-cover rounded-full"/>
