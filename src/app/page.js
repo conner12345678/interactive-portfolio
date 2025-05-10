@@ -48,6 +48,8 @@ export default function Home() {
       .addLabel('card3Enter')
       .from('.card3', { x: '-100vw', duration: 1, ease: 'power2.inOut' }, '<')
       .to('.card3', { x: 0, duration: 1, ease: 'power2.inOut' })
+      .addLabel('carrd3Exit')
+      .to('.card3', { x: 0, duration: 1, ease: 'power2.inOut'})
 
     let pinTrigger = ScrollTrigger.create({
       trigger: '.card-wrapper',
@@ -58,11 +60,10 @@ export default function Home() {
     })
 
     return () => {
-      // 💥 Clean up timeline and ScrollTriggers
       tl.scrollTrigger?.kill();
       tl.kill();
       pinTrigger.kill();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // optional: kill all triggers
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, [])
 
@@ -108,7 +109,7 @@ export default function Home() {
         <div className="card">
           <HomeContent title="My Projects" content={
             <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 text-center">
                 <a href="https://cehly-movie-quiz.netlify.app" target="_blank">
                     <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
                       <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
@@ -128,7 +129,7 @@ export default function Home() {
                     <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
                       <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
                         <Image
-                          src="https://res.cloudinary.com/duehylw5k/image/upload/v1746048020/Screenshot_2025-04-30_141020_hzppvq.png"
+                          src="https://res.cloudinary.com/duehylw5k/image/upload/v1746841300/Screenshot_2025-05-09_184103_wdcsul.png"
                           alt="Pokemon Website Picture"
                           fill
                           className="object-cover"
@@ -154,38 +155,45 @@ export default function Home() {
                     </div>
                   </a>
 
-                  <a href="#" target="_blank">
-                    <div className="bg-[#334155] p-4 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
-                      <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
-                        <Image
-                          src="https://res.cloudinary.com/duehylw5k/image/upload/v1734143850/task-manager/cb0aal7zt4uyjwqkv7j7.jpg"
-                          alt="test pic"
-                          fill
-                          className="object-cover"
-                          />
-                      </div>
-                      <h2 className="text-[f1f5f9] text-xl font-semibold">Test Project</h2>
-                      <p className="text-[#cbd5e1]">The desc</p>
-                    </div>
-                  </a>
+              </div>
+
+              <div className="flex justify-center">
+                <Link href='/myprojects'>
+                  <button className="bg-[#4ade80] text-black font-semibold px-4 py-2 rounded-lg hover:bg-[#4ade10] transition">
+                    Learn More
+                  </button>
+                </Link>
               </div>
             </>
           }/>
         </div>
 
         <div className="card2 absolute top-0">
-          <HomeContent title="Breifly About Me" content={
+          <HomeContent title="Briefly About Me" content={
             <div className="text-center">
               <p>I am an entree level software engineer with knowladge and certifications in, Javascript, HTML and CSS, and Python. I am constantly looking for new lessons on software development, and am looking for a job to further my knowladge.</p>
+              <div className="flex justify-center">
+                <Link href='/about'>
+                  <button className="bg-[#4ade80] text-black font-semibold px-4 py-2 rounded-lg hover:bg-[#4ade10] transition">
+                    Learn More
+                  </button>
+                </Link>
+              </div>
             </div>
           }/>
         </div>
 
         <div className="card3 absolute top-0">
           <HomeContent title="Contact" content={
-            <>
-
-            </>
+            <div className="text-center m-10">
+              <p className="text-[2vw] my-4">Email: </p>
+              <p className="text-blue-800 my-4"><a href="mailto:connerehly@yahoo.com">connerehly@yahoo.com</a></p>
+              <Link href="mailto:connerehly@yahoo.com">
+                <button className='bg-[#4ade80] text-black font-semibold px-4 py-2 rounded-lg hover:bg-[#4ade10] transition'>
+                  Contact Me
+                </button>
+              </Link>
+            </div>
           }/>
         </div>
       </div>
