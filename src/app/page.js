@@ -21,17 +21,17 @@ export default function Home() {
   useEffect(() => {
     let tl = gsap.timeline({
       scrollTrigger: {
-        trigger: '.card-wrapper',
+        trigger: ".card-wrapper",
         pin: true,
         pinSpacing: 100,
-        start: 'center center',
+        start: "center center",
         end: "+=3000",
         scrub: 1,
         snap: {
-          snapTo: 'labelsDirectional',
+          snapTo: "labelsDirectional",
           duration: 1,
           delay: 0.1,
-          ease: 'power1.inOut'
+          ease: "power1.inOut"
         }
       }
     })
@@ -100,7 +100,7 @@ export default function Home() {
             className="object-cover rounded-full"/>
         </div>
         <div className="name text-[32px] text-center">
-          <h1 className="text-[#F5F5F5]">Hi, I'm <span className="text-[#4ade80]">Conner Ehly</span> — an <span className="text-[#4ade80]">entry level web developer</span> with expertise in <span className="text-[#4ade80]">Python, Javascript, HTML, CSS, SCSS and Typescript</span>. Welcome to my portfolio! I'm excited to show you my work.</h1>
+          <h1 className="text-[#F5F5F5]">Hi, I am <span className="text-[#4ade80]">Conner Ehly</span> — an <span className="text-[#4ade80]">entry level web developer</span> with expertise in <span className="text-[#4ade80]">Python, Javascript, HTML, CSS, SCSS and Typescript</span>. Welcome to my portfolio! I'm excited to show you my work.</h1>
         </div>
         <hr className="my-6 border-t-2 border-[#4ade80] w-full"/>
       </div>
@@ -158,7 +158,7 @@ export default function Home() {
               </div>
 
               <div className="flex justify-center">
-                <Link href='/myprojects'>
+                <Link href="/myprojects">
                   <button className="bg-[#4ade80] text-black font-semibold px-4 py-2 rounded-lg hover:bg-[#4ade10] transition">
                     Learn More
                   </button>
@@ -173,7 +173,7 @@ export default function Home() {
             <div className="text-center">
               <p>I am an entree level software engineer with knowladge and certifications in, Javascript, HTML and CSS, and Python. I am constantly looking for new lessons on software development, and am looking for a job to further my knowladge.</p>
               <div className="flex justify-center">
-                <Link href='/about'>
+                <Link href="/about">
                   <button className="bg-[#4ade80] text-black font-semibold px-4 py-2 rounded-lg hover:bg-[#4ade10] transition">
                     Learn More
                   </button>
@@ -189,7 +189,7 @@ export default function Home() {
               <p className="text-[2vw] my-4">Email: </p>
               <p className="text-blue-800 my-4"><a href="mailto:connerehly@yahoo.com">connerehly@yahoo.com</a></p>
               <Link href="mailto:connerehly@yahoo.com">
-                <button className='bg-[#4ade80] text-black font-semibold px-4 py-2 rounded-lg hover:bg-[#4ade10] transition'>
+                <button className="bg-[#4ade80] text-black font-semibold px-4 py-2 rounded-lg hover:bg-[#4ade10] transition">
                   Contact Me
                 </button>
               </Link>
