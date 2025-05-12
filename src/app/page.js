@@ -100,7 +100,7 @@ export default function Home() {
             className="object-cover rounded-full"/>
         </div>
         <div className="name text-[32px] text-center">
-          <h1 className="text-[#F5F5F5]">Hi, I am <span className="text-[#4ade80]">Conner Ehly</span> — an <span className="text-[#4ade80]">entry level web developer</span> with expertise in <span className="text-[#4ade80]">Python, Javascript, HTML, CSS, SCSS and Typescript</span>. Welcome to my portfolio! I'm excited to show you my work.</h1>
+          <h1 className="text-[#F5F5F5]">Hi, I am <span className="text-[#4ade80]">Conner Ehly</span> — an <span className="text-[#4ade80]">entry level web developer</span> with expertise in <span className="text-[#4ade80]">Python, Javascript, HTML, CSS, SCSS and Typescript</span>. Welcome to my portfolio! I am excited to show you my work.</h1>
         </div>
         <hr className="my-6 border-t-2 border-[#4ade80] w-full"/>
       </div>
