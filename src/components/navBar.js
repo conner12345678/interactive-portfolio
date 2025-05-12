@@ -1,3 +1,4 @@
+'use client';
 import Link from "next/link"
 import { MdCancel } from "react-icons/md";
 import { motion } from 'framer-motion'
